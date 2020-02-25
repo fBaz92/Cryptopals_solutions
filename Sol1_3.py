@@ -40,7 +40,7 @@ def english_score_v2(presumable_plaintext):
 
 
 def english_score_v1(presumable_plaintext):
-    database_path = r'C:\Users\franc\Google Drive\git\Script_py\Hex64\1.3\words_alpha.txt'
+    database_path = r'words_alpha.txt'
     def create_dictionary(database_path):
         
         #read the file wich contains all the english words
@@ -139,26 +139,33 @@ def single_char_xor_string(bytestring,english_score):
 
 
 def main(hex_string, english_score):
+	
+	'''
+    Parameters
+    ----------
+    hex_string : str
+        DESCRIPTION
+        Hex string encoded with a character.
+    english_score : function
+        DESCRIPTION
+        algorithm to identify if wich character has encrypted the Phrase.
+
+    -------
+	Prints the plaintext and the execution time
+	'''
+	
     
     hex_string = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
     bytestring = bytes.fromhex(hex_string)    
     plaintext = single_char_xor_string(bytestring,english_score)
-    print("La stringa esadecimale {0} è stata crittografata con il carattere {1} e il significato è {2}"
+    print("The hex string {0} is decrypted with {1} and the plaintext is {2}"
           .format(hex_string,chr(plaintext['key']),plaintext['plaintext'].decode()))
     
     return 
 
 if __name__ == '__main__':
     import time
-    hex_string = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-    start_time = time.time()
-    main(hex_string,english_score_v1)    
-    print('Il tempo di esecuzione con il mio algoritmo è {0}s'.format(time.time()-start_time))
-    
     start_time = time.time()
     main(hex_string,english_score_v2)    
-    print('Il tempo di esecuzione con il secondo algoritmo è {0}s'.format(time.time()-start_time))
-
-
-
+    print('Execution time: {0}s'.format(time.time()-start_time))
 
