@@ -139,23 +139,8 @@ def single_char_xor_string(bytestring,english_score):
 
 
 def main(hex_string, english_score):
-	
-	'''
-    Parameters
-    ----------
-    hex_string : str
-        DESCRIPTION
-        Hex string encoded with a character.
-    english_score : function
-        DESCRIPTION
-        algorithm to identify if wich character has encrypted the Phrase.
-
-    -------
-	Prints the plaintext and the execution time
-	'''
-	
     
-    hex_string = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
+    
     bytestring = bytes.fromhex(hex_string)    
     plaintext = single_char_xor_string(bytestring,english_score)
     print("The hex string {0} is decrypted with {1} and the plaintext is {2}"
@@ -164,6 +149,8 @@ def main(hex_string, english_score):
     return 
 
 if __name__ == '__main__':
+    hex_string = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
+    
     import time
     start_time = time.time()
     main(hex_string,english_score_v2)    
